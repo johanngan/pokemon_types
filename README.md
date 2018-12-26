@@ -1,6 +1,4 @@
 # PageRank-Style Rankings for Pokémon Types
- 
-===========================================
 
 Simple code/data for setting up and analyzing Pokémon types and type-relations using a directed graph. Initial goal was to use a PageRank-like algorithm to rank types and type combinations, but the graph data could also be used for other purposes.
 
@@ -21,9 +19,9 @@ The second "resistance" equation involves the transfer of offensive score to def
 `defense = damping + d*(Base - Damage*attack)`
  
 "Damage" is a matrix representing how susceptible each type is to other types. It is the column-normalized weighted adjacency matrix of "G". Hence, "Damage" is also stochastic. The negative sign is used in front of the "Damage*attack" term so that a higher amount of damage sustained corresponds to a lower defensive score.
- 
+
 "Base" is a uniform vector representing a "base amount of damage" that a type would receive from a type-less attack. Its purpose is to ensure that the term "Base - Damage*attack" remains stochastic. "Base" is defined as a uniform vector with elements equal to 2/171.
- 
+
 The system of equations was solved to achieve the rankings. Overall ranking values were calculated by simply averaging the "attack" and "defense" score vectors.
  
 Each pure type was scored for offense, defense, and overall by summing the scores of each type-combination containing that type. Each resulting 18-element vector was then normalized to be consistent with the other rank vectors.
